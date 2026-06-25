@@ -171,34 +171,3 @@ ul li {
     }
 }
 
-/* ==========================================================================
-   MULA: KAWALAN PAPARAN PLAYLIST (SPOTIFY VS YOUTUBE MUSIC)
-   ========================================================================== */
-
-/* Tetapan Asal (Untuk Skrin Desktop/Komputer Besar) */
-#playlist-phone {
-    /* Menyorokkan YouTube Music apabila dibuka di komputer desktop */
-    display: none;
-}
-
-#playlist-desktop {
-    /* Memastikan Spotify dipaparkan di komputer desktop */
-    display: block;
-}
-
-/* Tetapan Apabila Dibuka di Handphone atau Tablet (Skrin bawah 768px) */
-@media (max-width: 768px) {
-    #playlist-desktop {
-        /* Menyorokkan Spotify secara automatik di skrin handphone */
-        display: none !important;
-    }
-    
-    #playlist-phone {
-        /* Memaparkan YouTube Music secara automatik di skrin handphone */
-        display: block !important;
-    }
-}
-
-/* ==========================================================================
-   TAMAT: KAWALAN PAPARAN PLAYLIST (SPOTIFY VS YOUTUBE MUSIC)
-   ========================================================================== */
