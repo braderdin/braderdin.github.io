@@ -127,19 +127,48 @@ ul li {
     line-height: 1.5;
 }
 
-/* --- GAYA PAUTAN SOSIAL MEDIA (BUTTON) --- */
+/* ==========================================================================
+   MULA: bahagian butang pautan sosial media (button)
+   Abang boleh gantikan (replace) kod .social-link yang lama dengan kod di bawah:
+   ========================================================================== */
+
 .social-link {
-    /* Jadikan button blok (ke bawah) */
+    /* 1. Menjadikan pautan berbentuk kotak penuh (blok) ke bawah */
     display: block;
+
+    /* 2. Warna latar belakang asal butang (Kelabu gelap) */
     background-color: #333;
+
+    /* 3. Warna tulisan di dalam butang (Putih) */
     color: white;
-    text-decoration: none; /* Buang garis bawah link */
+
+    /* 4. Membuang garisan bawah (underline) yang biasanya ada pada pautan/link */
+    text-decoration: none; 
+
+    /* 5. Jarak ruang dalam antara tulisan dengan dinding kotak butang */
     padding: 8px;
+
+    /* 6. Jarak antara butang atas dengan butang bawah supaya tidak rapat sangat */
     margin-bottom: 5px;
+
+    /* 7. Kedudukan tulisan diatur betul-betul di tengah-tengah butang */
     text-align: center;
+
+    /* 8. Garisan luar (border) nipis di sekeliling butang berwarna kelabu cerah */
     border: 1px solid #777;
+
+    /* 9. Menjadikan gaya tulisan di dalam butang tebal */
     font-weight: bold;
+
+    /* 10. [Cantikkan Kesan Hover (CSS Transition)]
+       Membuatkan pertukaran warna latar dan warna tulisan berubah secara perlahan (smooth)
+       selama 0.3 saat apabila cursor tetikus digerakkan di atas butang, bukan berubah mengejut. */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+/* ==========================================================================
+   TAMAT: bahagian butang pautan sosial media (button)
+   ========================================================================== */
 
 /* Apa berlaku bila mouse lalu atas butang (Hover) */
 .social-link:hover {
