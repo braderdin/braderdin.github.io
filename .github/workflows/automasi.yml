@@ -2,6 +2,7 @@ name: Automasi Garage Abang Din
 
 on:
   schedule:
+    # Kita tukar masa kepada setiap 1 jam sekali supaya kaunter pelawat sentiasa update!
     - cron: '0 * * * *'
   workflow_dispatch:
 
@@ -21,32 +22,19 @@ jobs:
       with:
         python-version: '3.10'
 
+    # Kita tambah arahan untuk pasang library 'requests' supaya Python boleh ambik data dari internet
     - name: Pasang Library Tambahan
       run: pip install requests
 
-    # ==========================================================================
-    # KOLEKSI 1: AUTOMASI MOOD (Dijalankan oleh Robot Mood)
-    # ==========================================================================
-    制造- name: Jalankan skrip tukar_mood.py
+    - name: Jalankan skrip tukar_mood.py
       run: python tukar_mood.py
 
-    - name: Commit oleh Robot Mood
-      run: |
-        git config --local user.email "mood-bot@github.com"
-        git config --local user.name "Mekanik_Python_Mood" # <-- Nama Robot Pertama Abang!
-        git add index.html
-        git diff --quiet && git diff --staged --quiet || git commit -m "🤖 Mood: Dikemaskini oleh Mekanik Python"
-
-    # ==========================================================================
-    # KOLEKSI 2: AUTOMASI PELAWAT (Dijalankan oleh Robot Penjaga Kaunter)
-    # ==========================================================================
     - name: Jalankan skrip kemaskini_pelawat.py
       run: python kemaskini_pelawat.py
 
-    - name: Commit oleh Robot Kaunter & Push Semua
+    - name: Commit dan Push Perubahan
       run: |
-        git config --local user.email "counter-bot@github.com"
-        git config --local user.name "Robot_Penjaga_Garage" # <-- Nama Robot Kedua Abang!
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action Robot"
         git add index.html
-        git diff --quiet && git diff --staged --quiet || git commit -m "📊 Pelawat: Dikemaskini oleh Robot Penjaga Garage"
-        git push # <-- Hantar semua sekali gus ke GitHub abang
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Automasi: Mood & Kaunter Pelawat dikemas kini" && git push)
