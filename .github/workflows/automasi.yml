@@ -1,0 +1,35 @@
+name: Skrip Tukar Mood Automatik
+
+on:
+  # 1. Robot akan berjalan secara automatik setiap 6 jam
+  schedule:
+    - cron: '0 */6 * * *'
+  # 2. Membolehkan abang tekan butang 'Run' secara manual di web GitHub jika tak sabar nak tengok hasil
+  workflow_dispatch:
+
+jobs:
+  jalankan-python:
+    runs-on: ubuntu-latest
+
+    steps:
+    # A. Robot akan salin kod repo abang masuk ke dalam komputer dia
+    - name: Ambil kod repo
+      uses: actions/checkout@v3
+
+    # B. Robot pasang perisian Python
+    - name: Pasang Python
+      uses: actions/setup-python@v4
+      with:
+        python-python: '3.10'
+
+    # C. Robot jalankan skrip Python yang abang buat tadi
+    - name: Jalankan skrip tukar_mood.py
+      run: python tukar_mood.py
+
+    # D. Kalau ada perubahan, robot akan tolong commit & push sendiri masuk semula ke GitHub abang!
+    - name: Commit dan Push Perubahan
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action Robot"
+        git add index.html
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Automasi: Mood terkini dikemas kini oleh robot" && git push)
