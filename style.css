@@ -1,0 +1,172 @@
+
+/* --- TETAPAN ASAS (RESET) --- */
+/* Buang semua ruang kosong (margin/padding) asal browser */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Latar belakang keseluruhan website (Body) */
+body {
+    /* Warna latar belakang: kelabu gelap/hitam macam jalan tar */
+    background-color: #1a1a1a; 
+    /* Warna tulisan asas: Putih cerah */
+    color: #f0f0f0;
+    /* Tulisan gaya mesin taip/komputer lama (Retro MySpace vibe) */
+    font-family: 'Courier New', Courier, monospace;
+    /* Letak imej background pattern kalau ada (opsyenal) */
+    background-image: url('https://www.transparenttextures.com/patterns/carbon-fibre.png');
+}
+
+/* --- REKA BENTUK TEKS BERGERAK (MARQUEE) --- */
+.retro-marquee {
+    /* Warna latar kotak teks bergerak (Oren api) */
+    background-color: #ff4500;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    /* Garisan di bawah dan atas teks bergerak */
+    border-bottom: 3px solid #ffcc00;
+    border-top: 3px solid #ffcc00;
+}
+
+/* --- KOTAK UTAMA (CONTAINER) --- */
+.myspace-container {
+    /* Lebar maksimum website di desktop (tidak terlalu besar) */
+    max-width: 1000px;
+    /* Pastikan kotak utama duduk di tengah-tengah skrin */
+    margin: 20px auto;
+    /* Susunan lajur: Guna flexbox untuk susun kiri dan kanan */
+    display: flex;
+    /* Jarak antara lajur kiri dan kanan */
+    gap: 20px;
+    /* Jarak dalam kotak (padding) di kiri dan kanan untuk handphone */
+    padding: 0 15px;
+}
+
+/* --- LAJUR KIRI (LEFT COLUMN) --- */
+.left-column {
+    /* Lebar lajur kiri ialah 35% dari ruang sedia ada */
+    width: 35%;
+    /* Susun kotak-kotak di dalam dari atas ke bawah */
+    display: flex;
+    flex-direction: column;
+    /* Jarak antara kotak-kotak profil, biodata, dll */
+    gap: 15px;
+}
+
+/* --- LAJUR KANAN (RIGHT COLUMN) --- */
+.right-column {
+    /* Lebar lajur kanan lebih besar (65%) */
+    width: 65%;
+    /* Susun kotak dari atas ke bawah */
+    display: flex;
+    flex-direction: column;
+    /* Jarak antara kotak-kotak */
+    gap: 15px;
+}
+
+/* --- GAYA KOTAK-KOTAK (Gaya Klasik MySpace) --- */
+/* Tetapan ini diguna pakai untuk SEMUA kotak dalam lajur kiri dan kanan */
+.profile-box, .bio-box, .mood-box, .social-box, .badge-box, .content-box {
+    /* Latar belakang kotak agak lutsinar/kelabu */
+    background-color: #2b2b2b;
+    /* Garisan luar (border) gaya zaman dulu */
+    border: 2px solid #ff4500; 
+    /* Ruang jarak di bahagian dalam kotak (Padding) */
+    padding: 15px;
+}
+
+/* Tajuk (Heading 2 & 3) dalam kotak */
+h2, h3 {
+    /* Warna oren menyerlah */
+    color: #ffcc00;
+    /* Jarak sikit di bahagian bawah tajuk */
+    margin-bottom: 10px;
+    /* Garisan nipis di bawah tajuk */
+    border-bottom: 1px dashed #555;
+    padding-bottom: 5px;
+}
+
+/* --- GAYA KHAS PROFIL --- */
+.profile-box {
+    /* Teks di tengah-tengah (Center) */
+    text-align: center;
+}
+
+.profile-pic {
+    /* Saiz gambar profil */
+    width: 150px;
+    height: 150px;
+    /* Jadikan gambar bersegi empat dengan bucu bulat sikit */
+    border-radius: 10px;
+    /* Garisan keliling gambar profil */
+    border: 3px solid #ffcc00;
+    margin-bottom: 10px;
+}
+
+.quote {
+    /* Tulisan condong untuk kata-kata */
+    font-style: italic;
+    color: #00ffcc; /* Warna cyan retro */
+    font-weight: bold;
+}
+
+/* --- GAYA SENARAI BIODATA & GARAGE --- */
+ul {
+    /* Buang titik asal HTML pada senarai */
+    list-style-type: none;
+}
+
+ul li {
+    /* Jarak antara baris biodata */
+    margin-bottom: 8px;
+    /* Jarak tulisan antara baris */
+    line-height: 1.5;
+}
+
+/* --- GAYA PAUTAN SOSIAL MEDIA (BUTTON) --- */
+.social-link {
+    /* Jadikan button blok (ke bawah) */
+    display: block;
+    background-color: #333;
+    color: white;
+    text-decoration: none; /* Buang garis bawah link */
+    padding: 8px;
+    margin-bottom: 5px;
+    text-align: center;
+    border: 1px solid #777;
+    font-weight: bold;
+}
+
+/* Apa berlaku bila mouse lalu atas butang (Hover) */
+.social-link:hover {
+    background-color: #ff4500; /* Tukar oren */
+    color: black; /* Tukar tulisan hitam */
+}
+
+/* --- GAYA MOTO / BADGE BAWAH KIRI --- */
+.badge-box {
+    text-align: center;
+    background-color: black;
+    border: 2px dashed white;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* --- RESPONSIVE UNTUK HANDPHONE (Sangat Penting) --- */
+/* Kod dalam ini hanya aktif bila skrin kecil dari 768 pixel (Handphone/Tablet) */
+@media (max-width: 768px) {
+    .myspace-container {
+        /* Tukar susunan kiri-kanan jadi atas-bawah */
+        flex-direction: column; 
+    }
+
+    .left-column, .right-column {
+        /* Jadikan kedua-dua lajur mengambil 100% lebar skrin */
+        width: 100%; 
+    }
+}
