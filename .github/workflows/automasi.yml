@@ -1,35 +1,40 @@
-name: Skrip Tukar Mood Automatik
+name: Automasi Garage Abang Din
 
 on:
   schedule:
-    - cron: '0 */6 * * *'
+    # Kita tukar masa kepada setiap 1 jam sekali supaya kaunter pelawat sentiasa update!
+    - cron: '0 * * * *'
   workflow_dispatch:
 
-# TAMBAHAN UTAMA: Memberi kebenaran penuh kepada robot untuk menulis (write) dan push kod ke dalam repo abang
 permissions:
   contents: write
 
 jobs:
-  jalankan-python:
+  jalankan-automasi:
     runs-on: ubuntu-latest
 
     steps:
-    # Menggunakan versi v4 (terkini) untuk mengelakkan amaran deprecated Node.js
     - name: Ambil kod repo
       uses: actions/checkout@v4
 
-    # Menggunakan versi v5 (terkini)
     - name: Pasang Python
       uses: actions/setup-python@v5
       with:
-        python-version: '3.10' # Di sini saya dah betulkan daripada 'python-python' kepada 'python-version'
+        python-version: '3.10'
+
+    # Kita tambah arahan untuk pasang library 'requests' supaya Python boleh ambik data dari internet
+    - name: Pasang Library Tambahan
+      run: pip install requests
 
     - name: Jalankan skrip tukar_mood.py
       run: python tukar_mood.py
+
+    - name: Jalankan skrip kemaskini_pelawat.py
+      run: python kemaskini_pelawat.py
 
     - name: Commit dan Push Perubahan
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action Robot"
         git add index.html
-        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Automasi: Mood terkini dikemas kini oleh robot" && git push)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Automasi: Mood & Kaunter Pelawat dikemas kini" && git push)
